@@ -12,7 +12,7 @@ const app = new Express();
 const server = new Server(app);
 var db;
 
-app.use(bodyParser.urlencoded({extended: true}));
+//app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 
