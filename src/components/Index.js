@@ -1,12 +1,20 @@
 import React from 'react';
-import FilterTable from './FilterTable';
+import fire from '../fire'
 
 export default class Index extends React.Component {
-  render(){
 
+  componentWillMount(){
+    let database = fire.database();
+    let groupRef = database.ref('Groups/Austin');
+     groupRef.on('value',function(res){
+       console.log(res.val().Style);
+     });
+  }
+
+  render(){
     return (
       <div>
-        <FilterTable trades={this.props.trades}/>
+        <p>Hello World</p>
       </div>
     );
   }
