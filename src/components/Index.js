@@ -1,5 +1,6 @@
 import React from 'react';
 import fire from '../fire'
+import LogInBox from './LogInBox'
 
 export default class Index extends React.Component {
 
@@ -15,6 +16,7 @@ export default class Index extends React.Component {
     return (
       <div>
         <p>Hello World</p>
+        <LogInBox firebase={fire}/>
       </div>
     );
   }

@@ -13,8 +13,10 @@ const admin = require('firebase-admin');
  });
 
  exports.addGroup = functions.https.onRequest((req,res) => {
-    const original = req.query.text;
-    admin.database().ref('/Groups/Austin').push({original:original}).then(snapshot =>{
-      res.redirect(303,snapshot.ref);
+    const newGroup  = req.query.text;
+    admin.database().ref('/Groups/'+ newGroup).set({
+      Founded: "default",
+      Style: "default"
     });
+    res.send("add group requested");
   });
