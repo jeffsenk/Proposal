@@ -19,7 +19,8 @@ export default class MainBox extends React.Component {
          <p>{this.props.user.email}</p>
         </div>
       );
-    }else{    
+    }else{   
+    //default display 
       return (
         <div>
           <p>Hello World</p>
