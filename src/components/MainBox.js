@@ -23,7 +23,7 @@ export default class MainBox extends React.Component {
     //default display 
       return (
         <div>
-          <p>Hello World</p>
+          <p>Default Display</p>
         </div>
       );
     }
