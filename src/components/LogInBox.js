@@ -7,14 +7,10 @@ export default class LogInBox extends React.Component {
     this.state = {email:"",password:""}
     this.toggleSignIn = this.toggleSignIn.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.signOut = this.signOut.bind(this);
   }
 
   componentWillMount(){
-    this.props.firebase.auth().onAuthStateChanged(function(user) {
-      if(user){
-        console.log(user);
-      }
-    });
   }
 
   handleChange(event){
@@ -46,12 +42,17 @@ export default class LogInBox extends React.Component {
     }
   }
 
+  signOut(){
+    this.props.firebase.auth().signOut();
+  }
+
   render(){
     return (
       <div>
         <input type ="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Email"/>
         <input type ="text" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
         <button id="quickstart-sign-in" name="signin" onClick={this.toggleSignIn}>Sign In</button>
+        <button id="signOut" name="signOut" onClick={this.signOut}>Sign Out</button>
       </div>
     );
   }
