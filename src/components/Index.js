@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from '../fire'
-import LogInBox from './LogInBox'
-import MainBox from './MainBox'
+import DefaultDisplay from './DefaultDisplay'
+import UserDisplay from './UserDisplay'
 
 export default class Index extends React.Component {
 
@@ -34,10 +34,16 @@ export default class Index extends React.Component {
   }
 
   render(){
+    if(this.state.user.email){
+      return(
+        <div>
+          <UserDisplay firebase={firebase} user={this.state.user}/>
+        </div>
+      );
+    }
     return (
       <div>
-        <LogInBox firebase={firebase}/>
-        <MainBox firebase={firebase} user={this.state.user}/>
+        <DefaultDisplay firebase={firebase}/>
       </div>
     );
   }
