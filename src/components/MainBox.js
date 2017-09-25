@@ -13,19 +13,16 @@ export default class MainBox extends React.Component {
   }
 
   render(){
-    if(this.props.user.email){
-      return(
-        <div>
-         <p>{this.props.user.email}</p>
-        </div>
-      );
-    }else{   
-    //default display 
-      return (
-        <div>
-          <p>Default Display</p>
-        </div>
-      );
+
+    const style = {
+      verticalAlign: 'top',
+      display: 'inline-block'
     }
+
+    return (
+      <div style={style}>
+        <p>Main Box</p>
+      </div>
+    );
   }
 }

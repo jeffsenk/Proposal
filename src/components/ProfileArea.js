@@ -11,8 +11,12 @@ export default class ProfileArea extends React.Component{
   }
 
   render(){
+    const style={
+      height:'25%'
+    }
+
     return(
-      <div>
+      <div style={style}>
         <p>{this.props.user.email}</p>
         <button id="signOut" name="signOut" onClick={this.signOut}>Sign Out</button>
       </div>
