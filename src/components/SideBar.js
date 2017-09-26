@@ -1,7 +1,7 @@
 import React from 'react';
-import ProfileArea from './ProfileArea'
 import GroupArea from './GroupArea'
 import ProposalArea from './ProposalArea'
+import ProfileArea from './ProfileArea'
 
 export default class SideBar extends React.Component{
  
@@ -21,7 +21,7 @@ export default class SideBar extends React.Component{
     return(
       <div style={style}>
         <ProfileArea firebase={this.props.firebase} user={this.props.user}/>
-        <GroupArea />
+        <GroupArea user={this.props.user} database={this.props.firebase.database()} />
         <ProposalArea />
       </div>
     );

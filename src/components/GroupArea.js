@@ -1,4 +1,5 @@
 import React from 'react'
+import GroupList from './GroupList'
 
 export default class GroupArea extends React.Component{
   constructor(props){
@@ -13,6 +14,7 @@ export default class GroupArea extends React.Component{
     return(
       <div style={style}>
        <p>Groups </p>
+       <GroupList user={this.props.user} database={this.props.database}/>
       </div>
     );
   }

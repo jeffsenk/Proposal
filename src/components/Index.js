@@ -18,7 +18,6 @@ export default class Index extends React.Component {
         this.setState({
           user: currentUser
         });
-        console.log(this.state.user.email);
       }else{
         this.setState({
           user: {}

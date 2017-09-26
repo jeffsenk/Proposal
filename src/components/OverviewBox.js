@@ -11,14 +11,16 @@ export default class OverviewBox extends React.Component{
 
   componentDidMount(){
     let database = this.props.database;
-    let defaultGroupRef = database.ref('Groups/USA/Proposals');
+    let defaultGroupRef = database.ref('Groups/9dj3k/Proposals');
     defaultGroupRef.on('value',function(snapShot){
       snapShot.forEach(function(child){
         let proposal = database.ref('Proposals/'+child.key);
         proposal.on('value',function(res){
           let newState = this.state.proposals;
           newState.push(res.val().Name);
-          this.setState({proposals:newState});
+          if(this.refs.OverviewBox){
+            this.setState({proposals:newState});
+          }
         }.bind(this));
       }.bind(this));       
     }.bind(this));
@@ -32,14 +34,13 @@ export default class OverviewBox extends React.Component{
       });
 
       return(
-        <div>
+        <div ref="OverviewBox">
          <ul>{proposalArray}</ul>
         </div>
       );
     }
     return(
-      <div>
-        <p> Loading... </p>
+      <div ref="OverviewBox">
       </div>
     );
   }  
