@@ -13,12 +13,6 @@ export default class Index extends React.Component {
   }
 
   componentWillMount(){
-    let database = firebase.database();
-    let groupRef = database.ref('Groups/Austin');
-     groupRef.on('value',function(res){
-       console.log(res.val().Style);
-     });
-
     firebase.auth().onAuthStateChanged(function(currentUser) {
       if(currentUser){
         this.setState({

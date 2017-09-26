@@ -10,25 +10,21 @@ export default class LogInBox extends React.Component {
     this.signOut = this.signOut.bind(this);
   }
 
-  componentWillMount(){
-  }
-
   handleChange(event){
     const name = event.target.name;
     const value = event.target.value;
-
     this.setState({
       [name]:value
     });
   }
 
   toggleSignIn(){
-    if (this.props.firebase.auth().currentUser){
-      this.props.firebase.auth().signOut();
+    if (this.props.auth.currentUser){
+      this.props.auth.signOut();
     }else{
       var email = this.state.email;
       var password = this.state.password;
-      this.props.firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      this.props.auth.signInWithEmailAndPassword(email, password).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -43,7 +39,7 @@ export default class LogInBox extends React.Component {
   }
 
   signOut(){
-    this.props.firebase.auth().signOut();
+    this.props.auth.signOut();
   }
 
   render(){

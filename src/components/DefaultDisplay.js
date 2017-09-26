@@ -1,5 +1,6 @@
 import React from 'react';
 import LogInBox from './LogInBox'
+import OverviewBox from './OverviewBox'
  
 export default class DefaultDisplay extends React.Component{
 
@@ -7,11 +8,14 @@ export default class DefaultDisplay extends React.Component{
     super(props);
   }
 
+  componentWillMount(){
+  }
+
   render(){
     return(
       <div>
-        <LogInBox firebase={this.props.firebase}/>
-        <p> Default Display Here </p>
+        <LogInBox auth={this.props.firebase.auth()}/>
+        <OverviewBox database={this.props.firebase.database()}/>
       </div>
     );
   }  
