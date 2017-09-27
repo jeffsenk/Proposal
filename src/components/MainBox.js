@@ -1,4 +1,5 @@
 import React from 'react';
+import ProposalBox from './ProposalBox'
 
 export default class MainBox extends React.Component {
 
@@ -15,13 +16,23 @@ export default class MainBox extends React.Component {
   render(){
 
     const style = {
-      verticalAlign: 'top',
-      display: 'inline-block'
+      height: '100%',
+      overflow: 'scroll',
+      verticalAlign: 'top'
     }
 
     return (
       <div style={style}>
-        <p>Main Box</p>
+        <ProposalBox/>
+        <ProposalBox/>
+        <ProposalBox/>
+        <ProposalBox/>
+        <ProposalBox/>
+        <ProposalBox/>
+        <ProposalBox/>
+        <ProposalBox/>
+        <ProposalBox/>
+        <ProposalBox/>
       </div>
     );
   }
