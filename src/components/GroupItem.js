@@ -3,7 +3,20 @@ import React from 'react';
 export default class GroupItem extends React.Component{
   constructor(props){
     super(props);
+    this.state={
+      highlight: 'initial'
+    }
     this.handleClick=this.handleClick.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseExit = this.handleMouseExit.bind(this);
+  }
+
+  handleMouseEnter(){
+    this.setState({highlight:'lightGrey'});
+  }
+
+  handleMouseExit(){
+    this.setState({highlight:'initial'});
   }
 
   handleClick(){
@@ -11,8 +24,12 @@ export default class GroupItem extends React.Component{
   }
 
   render(){
+    const style={
+      backgroundColor: this.state.highlight
+    }
+
     return(
-      <div onClick={this.handleClick}>
+      <div style={style} onClick={this.handleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseExit}>
         {this.props.group.val().Name}
       </div>
     );
