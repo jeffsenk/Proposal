@@ -43,17 +43,17 @@ export default class ProposalBox extends React.Component{
     return(
       <div style={outer}>
         <div style={group}>
-         group
+         {this.props.proposal.val().Group}
         </div>
         <div style={name}>
-          Name
+          {this.props.proposal.val().Name}
         </div>
         <div style={votes}>
           <div style={upVote}>
-            Yes
+            Yes {this.props.proposal.val().VotesFor}
           </div>
           <div style={downVote}>
-            No
+            No  {this.props.proposal.val().VotesAgainst}
           </div>
         </div>
       </div>

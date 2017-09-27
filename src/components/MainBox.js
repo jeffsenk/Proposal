@@ -42,7 +42,9 @@ export default class MainBox extends React.Component {
     if(this.state.proposals.length > 0){
       let proposalArray =[]
       this.state.proposals.forEach(function(proposal){
-        proposalArray.push(<li key={proposal.key}>{proposal.val().Name}</li>);
+        proposalArray.push(<li key={proposal.key}>
+          <ProposalBox proposal={proposal}/>
+        </li>);
       }.bind(this));
 
       return(
