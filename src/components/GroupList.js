@@ -1,4 +1,5 @@
 import React from 'react';
+import GroupItem from './GroupItem'
  
 export default class GroupList extends React.Component{
 
@@ -17,7 +18,7 @@ export default class GroupList extends React.Component{
         let groupRef = database.ref('Groups/'+child.key);
         groupRef.on('value',function(res){
           let newState = this.state.groups;
-          newState.push(res.val().Name);
+          newState.push(res);
           this.setState({groups:newState});
         }.bind(this));
       }.bind(this));       
@@ -28,8 +29,10 @@ export default class GroupList extends React.Component{
     if(this.state.groups.length >0){
       let groupArray = [];
       this.state.groups.forEach(function(group){
-        groupArray.push(<li key={group}>{group}</li>);
-      });
+        groupArray.push(<li key={group.key}>
+          <GroupItem group={group}/>
+        </li>);
+      }.bind(this));
 
       return(
         <div>
