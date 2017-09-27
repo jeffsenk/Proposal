@@ -30,7 +30,7 @@ export default class GroupList extends React.Component{
       let groupArray = [];
       this.state.groups.forEach(function(group){
         groupArray.push(<li key={group.key}>
-          <GroupItem group={group}/>
+          <GroupItem group={group} selectGroup={this.props.selectGroup}/>
         </li>);
       }.bind(this));
 

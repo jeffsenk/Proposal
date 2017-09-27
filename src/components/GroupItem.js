@@ -7,7 +7,7 @@ export default class GroupItem extends React.Component{
   }
 
   handleClick(){
-    console.log(this.props.group.key);
+    this.props.selectGroup(this.props.group);
   }
 
   render(){
