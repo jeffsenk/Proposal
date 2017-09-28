@@ -1,5 +1,6 @@
 import React from 'react';
 import ProposalBox from './ProposalBox'
+import ProposalView from './ProposalView'
 
 export default class MainBox extends React.Component {
 
@@ -40,7 +41,9 @@ export default class MainBox extends React.Component {
     }
     if(this.props.selectedProposal.key){
      return(
-       <div>{this.props.selectedProposal.val().Name}</div>
+       <div style={style}>
+         <ProposalView proposal={this.props.selectedProposal}/>
+       </div>
      ); 
     }else if(this.state.proposals.length > 0){
       let proposalArray =[]

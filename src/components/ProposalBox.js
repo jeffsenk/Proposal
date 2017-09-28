@@ -13,6 +13,7 @@ export default class ProposalBox extends React.Component{
 
   render(){
     const outer={
+      cursor: 'pointer',
       borderRadius:'10px',
       borderStyle:'solid',
       marginTop:'1%',
@@ -48,7 +49,7 @@ export default class ProposalBox extends React.Component{
     return(
       <div style={outer} onClick={this.handleClick}>
         <div style={group}>
-         {this.props.proposal.val().Group}
+         {this.props.proposal.val().GroupName}
         </div>
         <div style={name}>
           {this.props.proposal.val().Name}

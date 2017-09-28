@@ -8,13 +8,16 @@ export default class ProposalView extends React.Component{
   render(){
 
     const style={
-      height:'80%',
-      width:'80%',
-      border: 'solid'
+      marginTop:'1%',
+      marginLeft:'1%',
+      borderRadius:'10px',
+      height: '80%',
+      width: '80%',
+      borderStyle: 'solid'
     }
 
     return(
-      <div>
+      <div style={style}>
         {this.props.proposal.val().Name}
       </div>
     );
