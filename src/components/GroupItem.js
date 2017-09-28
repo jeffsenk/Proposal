@@ -25,6 +25,7 @@ export default class GroupItem extends React.Component{
 
   render(){
     const style={
+      cursor: 'pointer',
       backgroundColor: this.state.highlight
     }
 

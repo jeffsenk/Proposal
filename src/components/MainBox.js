@@ -38,12 +38,15 @@ export default class MainBox extends React.Component {
       overflow: 'scroll',
       verticalAlign: 'top'
     }
-
-    if(this.state.proposals.length > 0){
+    if(this.props.selectedProposal.key){
+     return(
+       <div>{this.props.selectedProposal.val().Name}</div>
+     ); 
+    }else if(this.state.proposals.length > 0){
       let proposalArray =[]
       this.state.proposals.forEach(function(proposal){
         proposalArray.push(<li key={proposal.key}>
-          <ProposalBox proposal={proposal}/>
+          <ProposalBox proposal={proposal} selectProposal={this.props.selectProposal}/>
         </li>);
       }.bind(this));
 

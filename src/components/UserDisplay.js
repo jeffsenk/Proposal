@@ -7,13 +7,25 @@ export default class UserDisplay extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      selectedGroup:{}
+      selectedGroup:{},
+      selectedProposal:{}
     }
     this.selectGroup = this.selectGroup.bind(this);
+    this.selectProposal = this.selectProposal.bind(this);
   }
 
   selectGroup(group){
-    this.setState({selectedGroup:group});
+    this.setState({selectedGroup:group,
+      selectedProposal:{}
+    });
+  }
+
+  selectProposal(proposal){
+    let newState={
+      selectedGroup:this.state.selectedGroup,
+      selectedProposal: proposal
+    }
+    this.setState(newState);
   }
 
   componentDidMount(){
@@ -29,7 +41,8 @@ export default class UserDisplay extends React.Component{
       return(
         <div>
           <SideBar firebase={this.props.firebase} user={this.props.user} selectGroup={this.selectGroup}/>
-          <MainBox firebase={this.props.firebase} user={this.props.user} selectedGroup={this.state.selectedGroup}/>
+          <MainBox firebase={this.props.firebase} user={this.props.user} selectedGroup={this.state.selectedGroup}
+           selectProposal={this.selectProposal} selectedProposal={this.state.selectedProposal}/>
         </div>
       );
     }

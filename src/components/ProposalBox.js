@@ -4,6 +4,11 @@ export default class ProposalBox extends React.Component{
 
   constructor(props){
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(){
+    this.props.selectProposal(this.props.proposal);
   }
 
   render(){
@@ -41,7 +46,7 @@ export default class ProposalBox extends React.Component{
     }
 
     return(
-      <div style={outer}>
+      <div style={outer} onClick={this.handleClick}>
         <div style={group}>
          {this.props.proposal.val().Group}
         </div>
