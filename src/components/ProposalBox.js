@@ -46,6 +46,10 @@ export default class ProposalBox extends React.Component{
       overflow:'hidden',
     }
 
+    const total = this.props.proposal.val().VotesPro + this.props.proposal.val().VotesCon;
+    const proPer = ((this.props.proposal.val().VotesPro/total)*100).toFixed(0);
+    const conPer = ((this.props.proposal.val().VotesCon/total)*100).toFixed(0);
+
     return(
       <div style={outer} onClick={this.handleClick}>
         <div style={group}>
@@ -56,10 +60,10 @@ export default class ProposalBox extends React.Component{
         </div>
         <div style={votes}>
           <div style={upVote}>
-            Yes {this.props.proposal.val().VotesFor}
+            Pro {proPer} %
           </div>
           <div style={downVote}>
-            No  {this.props.proposal.val().VotesAgainst}
+            Con {conPer} %
           </div>
         </div>
       </div>

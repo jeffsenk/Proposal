@@ -1,6 +1,8 @@
 import React from 'react';
 import ProposalBox from './ProposalBox'
 import ProposalView from './ProposalView'
+import NewGroupView from './NewGroupView'
+import NewProposalView from './NewProposalView'
 
 export default class MainBox extends React.Component {
 
@@ -39,7 +41,15 @@ export default class MainBox extends React.Component {
       overflow: 'scroll',
       verticalAlign: 'top'
     }
-    if(this.props.selectedProposal.key){
+    if(this.props.newGroup){
+     return(
+        <NewGroupView resetAfter={this.props.resetAfter}/>
+      );
+    }else if(this.props.newProposal){
+      return(
+        <NewProposalView resetAfter={this.props.resetAfter}/>
+      );
+    }else if(this.props.selectedProposal.key){
      return(
        <div style={style}>
          <ProposalView proposal={this.props.selectedProposal}/>

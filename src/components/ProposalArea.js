@@ -1,4 +1,5 @@
 import React from 'react'
+import NewProposalItem from './NewProposalItem'
 
 export default class ProposalArea extends React.Component{
   constructor(props){
@@ -9,6 +10,7 @@ export default class ProposalArea extends React.Component{
     return(
       <div>
        <p>Proposals </p>
+       <NewProposalItem createProposal={this.props.createProposal}/>
       </div>
     );
   }

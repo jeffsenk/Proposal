@@ -20,6 +20,12 @@ export default class ProposalOverview extends React.Component{
       marginTop:'2%'
     }
 
+    const submitter={
+      position:'absolute',
+      right:'1%',
+      bottom:'5%'
+    }
+
     return(
       <div style={this.props.style}>
         <div style={groupName}>
@@ -30,6 +36,9 @@ export default class ProposalOverview extends React.Component{
         </div>
         <div style={description}>
           {this.props.proposal.val().Description}
+        </div>
+        <div style={submitter}>
+         -  {this.props.proposal.val().SubmitterName}
         </div>
       </div>
     );

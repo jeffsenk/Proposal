@@ -1,5 +1,6 @@
 import React from 'react';
 import GroupItem from './GroupItem'
+import NewGroupItem from './NewGroupItem'
  
 export default class GroupList extends React.Component{
 
@@ -26,6 +27,7 @@ export default class GroupList extends React.Component{
   }
 
   render(){
+
     if(this.state.groups.length >0){
       let groupArray = [];
       this.state.groups.forEach(function(group){
@@ -34,9 +36,16 @@ export default class GroupList extends React.Component{
         </li>);
       }.bind(this));
 
+      const list={
+        listStyleType:'none',
+        padding:'0px',
+        marginTop:'1px',
+        marginBottom:'3px'
+      }
+
       return(
         <div>
-         <ul>{groupArray}</ul>
+         <ul style={list}>{groupArray}</ul>
         </div>
       );
     }
