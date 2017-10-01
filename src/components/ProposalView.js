@@ -19,36 +19,38 @@ export default class ProposalView extends React.Component{
     }
 
     const upper={
+      marginLeft:'1%',
       height:'49%',
-      borderStyle: 'solid',
     }
 
     const lower={
       height:'49%',
-      borderStyle: 'solid',
     }
 
     const pro={
+      borderRadius:'10px',
+      marginLeft:'1%',
       borderStyle: 'solid',
       height:'100%',
-      width:'49%',
-      display:'block',
-      float: 'left'
+      width:'48%',
+      display:'inline-block'
     }
 
     const con={
+      borderRadius:'10px',
+      marginLeft:'1%',
+      width: '48%',
       borderStyle: 'solid',
       height: '100%',
-      width: '49%',
-      overflow: 'hidden'      
+      display:'inline-block'
     }
 
     return(
       <div style={style}>
         <ProposalOverview style={upper} proposal={this.props.proposal}/>
         <div style={lower}>
-          <VoteArea style={pro} Side='Pro'/>
-          <VoteArea style={con} Side='Con'/>
+          <VoteArea style={pro} Side='Pro' Votes={this.props.proposal.val().VotesFor}/>
+          <VoteArea style={con} Side='Con' Votes={this.props.proposal.val().VotesAgainst}/>
         </div>
       </div>
     );
