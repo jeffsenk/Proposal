@@ -14,14 +14,26 @@ export default class GroupList extends React.Component{
   componentDidMount(){
     let database = this.props.database;
     let userGroupsRef = database.ref('Users/'+this.props.user.uid+'/groups');
-//bug is because value gets called again when new Proposal is added to group
     userGroupsRef.on('value',function(snapShot){
       snapShot.forEach(function(child){
        let groupRef = database.ref('Groups/'+child.key);
         groupRef.on('value',function(res){
-          let newState = this.state.groups;
-          newState.push(res);
-          this.setState({groups:newState});
+          var match = false;
+          for(var i =0;i<this.state.groups.length;i++){
+            if(this.state.groups[i].key == res.key){
+              console.log(res.key);
+              let newState = this.state.groups;
+              newState[i] = res;
+              this.setState({groups:newState});
+              match = true;
+              break;
+            }
+          }
+          if(!match){
+            let newState = this.state.groups;
+            newState.push(res);
+            this.setState({groups:newState});
+          }
         }.bind(this));
       }.bind(this));       
     }.bind(this));
@@ -32,8 +44,7 @@ export default class GroupList extends React.Component{
     if(this.state.groups.length >0){
       let groupArray = [];
       this.state.groups.forEach(function(group){
-//        groupArray.push(<li key={group.key}>
-        groupArray.push(<li>
+        groupArray.push(<li key={group.key}>
           <GroupItem group={group} selectGroup={this.props.selectGroup}/>
         </li>);
       }.bind(this));
