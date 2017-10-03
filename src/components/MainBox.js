@@ -47,7 +47,8 @@ export default class MainBox extends React.Component {
       );
     }else if(this.props.newProposal){
       return(
-        <NewProposalView user={this.props.user} database={this.props.firebase.database()} resetAfter={this.props.resetAfter}/>
+        <NewProposalView group={this.props.selectedGroup} user={this.props.user} database={this.props.firebase.database()}
+         resetAfter={this.props.resetAfter}/>
       );
     }else if(this.props.selectedProposal.key){
      return(

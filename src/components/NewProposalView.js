@@ -6,7 +6,6 @@ export default class NewProposalView extends React.Component{
     this.handleCancel=this.handleCancel.bind(this);
     this.state={
       name:"",
-      group:"",
       description:""
     }
     this.handleChange=this.handleChange.bind(this);
@@ -26,15 +25,18 @@ export default class NewProposalView extends React.Component{
   }
 
   handleSubmit(){
-    console.log(this.state.name,this.state.group);
-    this.props.database.ref('Proposals/').push({
+    var newProposalKey = this.props.database.ref('Proposals/').push({
       Name:this.state.name,
-      GroupName:this.state.group,
+      GroupName:this.props.group.val().Name,
+      Group:this.props.group.key,
       Submitter:this.props.user.uid,
+      SubmitterName:this.props.user.displayName,
       VotesPro:0,
       VotesCon:0,
       Description:this.state.description
-    });
+    }).key;
+    this.props.database.ref('Groups/' + this.props.group.key + '/Proposals/'+newProposalKey).set(true);
+    this.props.resetAfter();
   }
 
   render(){
@@ -44,7 +46,7 @@ export default class NewProposalView extends React.Component{
         <div>  Name </div>
           <input type ="text" name="name" value={this.state.name} onChange={this.handleChange}/>
         <div>  Group </div>
-          <input type ="text" name="group" value={this.state.group} onChange={this.handleChange}/>
+        <div> {this.props.group.val().Name}</div>
         <div>  Description </div>
           <input type ="text" name="description" value={this.state.description} onChange={this.handleChange}/>
         <div onClick={this.handleCancel}>Cancel</div>
