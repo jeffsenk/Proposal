@@ -26,6 +26,10 @@ export default class NewGroupView extends React.Component{
 
   handleSubmit(){
     console.log(this.state.name,this.state.parentGroup);
+    this.props.database.ref('Groups/').push({
+      Name:this.state.name,
+      Parent:this.state.parentGroup
+    });
   }
 
   render(){
