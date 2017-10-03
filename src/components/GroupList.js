@@ -21,7 +21,6 @@ export default class GroupList extends React.Component{
           var match = false;
           for(var i =0;i<this.state.groups.length;i++){
             if(this.state.groups[i].key == res.key){
-              console.log(res.key);
               let newState = this.state.groups;
               newState[i] = res;
               this.setState({groups:newState});

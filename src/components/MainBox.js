@@ -19,9 +19,21 @@ export default class MainBox extends React.Component {
     for(var proposalKey in this.props.selectedGroup.val().Proposals){
       let proposalRef = database.ref('Proposals/'+proposalKey);
       proposalRef.on('value',function(res){
-        let newState = this.state.proposals;
-        newState.push(res);
-        this.setState({proposals:newState});
+        let match=false;  
+        for(var i=0;i<this.state.proposals.length;i++){
+          if(this.state.proposals[i].key == res.key){
+            let newState = this.state.proposals;
+            newState[i] = res;
+            this.setState({proposals:newState});
+            match=true;
+            break;
+          }
+        }
+        if(!match){
+          let newState = this.state.proposals;
+          newState.push(res);
+          this.setState({proposals:newState});
+        }
       }.bind(this));
     }
   }
