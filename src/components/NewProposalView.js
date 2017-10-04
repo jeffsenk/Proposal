@@ -36,6 +36,7 @@ export default class NewProposalView extends React.Component{
       Description:this.state.description
     }).key;
     this.props.database.ref('Groups/' + this.props.group.key + '/Proposals/'+newProposalKey).set(true);
+    this.props.database.ref('Groups/-KvaJHpNYjfychFjeKXX/Proposals/'+newProposalKey).set(true);
     this.props.resetAfter();
   }
 

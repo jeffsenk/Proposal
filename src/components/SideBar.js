@@ -22,7 +22,7 @@ export default class SideBar extends React.Component{
 
     return(
       <div style={style}>
-        <Home />
+        <Home reset={this.props.reset} />
         <ProfileArea firebase={this.props.firebase} user={this.props.user}/>
         <GroupArea user={this.props.user} database={this.props.firebase.database()} createGroup={this.props.createGroup} selectGroup={this.props.selectGroup} />
         <ProposalArea createProposal={this.props.createProposal} />

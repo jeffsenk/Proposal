@@ -7,11 +7,12 @@ export default class Home extends React.Component{
 
   render(){
     const style={
+      cursor:'pointer',
       height:'5%'
     }
 
     return(
-      <div style={style}>
+      <div style={style} onClick={this.props.reset}>
         <p>Home</p>
       </div>
     );

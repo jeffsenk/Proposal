@@ -1,6 +1,7 @@
 import React from 'react';
 import SideBar from './SideBar'
 import MainBox from './MainBox'
+const defaultGroupKey = '-KvaJHpNYjfychFjeKXX'
 
 export default class UserDisplay extends React.Component{
 
@@ -38,15 +39,18 @@ export default class UserDisplay extends React.Component{
     }
     this.setState(newState);
   }
-
   resetAfter(){
-    let newState={
-      newGroup: false,
-      newProposal: false,
-      selectedGroup: this.state.selectedGroup,
-      selectedProposal: this.state.selectedProposal
-    }
-    this.setState(newState);
+    let database = this.props.firebase.database();
+    let groupRef = database.ref('Groups/'+defaultGroupKey);
+    groupRef.on('value',function(snapShot){
+      let newState={
+        newGroup:false,
+        newProposal:false,
+        selectedGroup:snapShot,
+        selectedProposal:{}
+      }
+      this.setState(newState);
+    }.bind(this));
   }
 
   selectGroup(group){
@@ -64,11 +68,7 @@ export default class UserDisplay extends React.Component{
   }
 
   componentDidMount(){
-    let database = this.props.firebase.database();
-    let groupRef = database.ref('Groups/9dj3k');
-    groupRef.on('value',function(snapShot){
-      this.setState({selectedGroup:snapShot});
-    }.bind(this));
+    this.resetAfter();
   }
 
   render(){
@@ -76,7 +76,7 @@ export default class UserDisplay extends React.Component{
       return(
         <div>
           <SideBar firebase={this.props.firebase} user={this.props.user} selectGroup={this.selectGroup} createGroup={this.createGroup}
-           createProposal={this.createProposal}/>
+           createProposal={this.createProposal} reset={this.resetAfter}/>
           <MainBox firebase={this.props.firebase} user={this.props.user} selectedGroup={this.state.selectedGroup}
            selectProposal={this.selectProposal} selectedProposal={this.state.selectedProposal} newGroup={this.state.newGroup}
            newProposal={this.state.newProposal} resetAfter={this.resetAfter}/>
