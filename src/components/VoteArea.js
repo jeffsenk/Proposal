@@ -8,22 +8,24 @@ export default class VoteArea extends React.Component{
 
   render(){
     const side={
-      fontSize: 'large',
+      fontSize: 'x-large',
       display: 'inline-block',
       marginLeft:'1%'
     }
 
     const votes={
-      fontSize: 'large',
+      fontSize: 'x-large',
       marginLeft:'1%',
       display: 'inline-block'
     }
 
     const button={
+      textAlign: 'center',
+      cursor:'pointer',
       height:'10%',
-      width:'10%',
+      width:'15%',
       borderRadius:'5px',
-      fontSize: 'large',
+      fontSize: 'x-large',
       border:'solid',
       display: 'inline-block',
       marginRight:'1%',
@@ -39,7 +41,7 @@ export default class VoteArea extends React.Component{
          {this.props.Votes}
         </div>
         <div onClick={this.props.newVote} style={button}>
-          Vote
+          {this.props.buttonText}
         </div>
       </div>
     );

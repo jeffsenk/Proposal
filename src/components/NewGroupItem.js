@@ -12,6 +12,7 @@ export default class NewGroupItem extends React.Component{
 
   render(){
     const style={
+      cursor:'pointer',
       marginBottom:'3px'
     }
 

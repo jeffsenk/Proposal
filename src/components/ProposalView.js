@@ -68,8 +68,8 @@ export default class ProposalView extends React.Component{
       <div style={style}>
         <ProposalOverview style={upper} proposal={this.props.proposal}/>
         <div style={lower}>
-          <VoteArea newVote={this.upVote} style={pro} Side='Pro' Votes={this.props.proposal.val().VotesPro}/>
-          <VoteArea newVote={this.downVote} style={con} Side='Con' Votes={this.props.proposal.val().VotesCon}/>
+          <VoteArea buttonText='Yes' newVote={this.upVote} style={pro} Side='Pro' Votes={this.props.proposal.val().VotesPro}/>
+          <VoteArea buttonText='No ' newVote={this.downVote} style={con} Side='Con' Votes={this.props.proposal.val().VotesCon}/>
         </div>
       </div>
     );

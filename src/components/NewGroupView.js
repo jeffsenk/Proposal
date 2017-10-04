@@ -33,6 +33,14 @@ export default class NewGroupView extends React.Component{
   }
 
   render(){
+    const cancel={
+      cursor:'pointer'
+    }
+
+    const create={
+      cursor:'pointer'
+    }
+
     return(
       <div>
         <div>  New Group </div>
@@ -40,8 +48,8 @@ export default class NewGroupView extends React.Component{
           <input type ="text" name="name" value={this.state.name} onChange={this.handleChange}/>
         <div>  Parent Group </div>
           <input type ="text" name="parentGroup" value={this.state.parentGroup} onChange={this.handleChange}/>
-        <div onClick={this.handleCancel}>Cancel</div>
-        <div onClick={this.handleSubmit}>Create</div>
+        <div style={cancel} onClick={this.handleCancel}>Cancel</div>
+        <div style={create} onClick={this.handleSubmit}>Create</div>
       </div>
     );
   }

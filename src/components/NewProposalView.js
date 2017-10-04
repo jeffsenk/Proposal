@@ -40,17 +40,80 @@ export default class NewProposalView extends React.Component{
   }
 
   render(){
+    const cancel={
+      borderStyle:'solid',
+      borderRadius:'10px',
+      padding:'10px',
+      display:'inline-block',
+      cursor:'pointer'
+    }
+
+    const submit={
+      float:'right',
+      marginRight:'2%',
+      borderStyle:'solid',
+      borderRadius:'10px',
+      padding:'10px',
+      display:'inline-block',
+      cursor:'pointer'
+    }
+
+    const style={
+      paddingLeft:'2%',
+      paddingBottom:'1%',
+      marginTop:'1%',
+      marginLeft:'1%',
+      fontSize:'x-large',
+      borderRadius:'10px',
+      height: '90%',
+      width: '80%',
+      borderStyle: 'solid'
+
+    }
+
+    const title={
+      fontSize:'xx-large',
+      marginBottom:'5%'
+    }
+
+    const name={
+      marginBottom:'5%'
+    }
+
+    const group={
+      marginBottom:'5%'
+    }
+    const description={
+      marginBottom:'5%'
+    }
+
+    const nameBox={
+      width:'80%',
+      fontSize:'x-large'
+    }
+
+    const descripBox={
+      width:'90%',
+      height:'20%',
+    }
+
     return(
-      <div>
-        <div>  New Proposal </div>
-        <div>  Name </div>
-          <input type ="text" name="name" value={this.state.name} onChange={this.handleChange}/>
-        <div>  Group </div>
-        <div> {this.props.group.val().Name}</div>
-        <div>  Description </div>
-          <input type ="text" name="description" value={this.state.description} onChange={this.handleChange}/>
-        <div onClick={this.handleCancel}>Cancel</div>
-        <div onClick={this.handleSubmit}>Create</div>
+      <div style={style}>
+        <div style={title}>  New Proposal </div>
+        <div style={name}>
+          <div> Name </div>
+          <input style={nameBox} type ="text" name="name" value={this.state.name} onChange={this.handleChange}/>
+        </div>
+        <div style={group}> 
+          <div> Group </div>
+          <div> {this.props.group.val().Name}</div>
+        </div>
+        <div style={description}> 
+          <div> Description </div>
+          <textarea style={descripBox} type ="text" name="description" value={this.state.description} onChange={this.handleChange}/>
+        </div>
+        <div style={cancel} onClick={this.handleCancel}>Cancel</div>
+        <div style={submit} onClick={this.handleSubmit}>Create</div>
       </div>
     );
   }

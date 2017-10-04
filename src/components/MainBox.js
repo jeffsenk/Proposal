@@ -55,12 +55,16 @@ export default class MainBox extends React.Component {
     }
     if(this.props.newGroup){
      return(
-        <NewGroupView user={this.props.user} database={this.props.firebase.database()} resetAfter={this.props.resetAfter}/>
+        <div style={style}>
+          <NewGroupView user={this.props.user} database={this.props.firebase.database()} resetAfter={this.props.resetAfter}/>
+        </div>
       );
     }else if(this.props.newProposal){
       return(
-        <NewProposalView group={this.props.selectedGroup} user={this.props.user} database={this.props.firebase.database()}
-         resetAfter={this.props.resetAfter}/>
+        <div style={style}>
+          <NewProposalView group={this.props.selectedGroup} user={this.props.user} database={this.props.firebase.database()}
+           resetAfter={this.props.resetAfter}/>
+        </div>
       );
     }else if(this.props.selectedProposal.key){
      return(
