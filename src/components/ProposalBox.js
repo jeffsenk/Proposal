@@ -46,9 +46,15 @@ export default class ProposalBox extends React.Component{
       overflow:'hidden',
     }
 
-    const total = this.props.proposal.val().VotesPro + this.props.proposal.val().VotesCon;
-    const proPer = ((this.props.proposal.val().VotesPro/total)*100).toFixed(0);
-    const conPer = ((this.props.proposal.val().VotesCon/total)*100).toFixed(0);
+    var total = this.props.proposal.val().VotesPro + this.props.proposal.val().VotesCon;
+    var pro =0;
+    var con =0;
+    if(total>0){
+     var pro= ((this.props.proposal.val().VotesPro/total)*100).toFixed(0);
+     var con= ((this.props.proposal.val().VotesCon/total)*100).toFixed(0);
+    }
+    const proPer = pro;
+    const conPer = con;
 
     return(
       <div style={outer} onClick={this.handleClick}>
