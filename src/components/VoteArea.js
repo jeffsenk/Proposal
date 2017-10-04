@@ -38,7 +38,7 @@ export default class VoteArea extends React.Component{
         <div style={votes}>
          {this.props.Votes}
         </div>
-        <div style={button}>
+        <div onClick={this.props.newVote} style={button}>
           Vote
         </div>
       </div>

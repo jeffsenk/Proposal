@@ -5,6 +5,22 @@ import VoteArea from './VoteArea'
 export default class ProposalView extends React.Component{
   constructor(props){
     super(props);
+    this.upVote=this.upVote.bind(this);
+    this.downVote=this.downVote.bind(this);
+  }
+
+  upVote(){
+    var proVoteRef = this.props.database.ref('Proposals/'+this.props.proposal.key+'/VotesPro');
+    proVoteRef.transaction(function(currentValue){
+      return(currentValue || 0)+1;
+    });    
+  }
+
+  downVote(){
+    var conVoteRef = this.props.database.ref('Proposals/'+this.props.proposal.key+'/VotesCon');
+    conVoteRef.transaction(function(currentValue){
+      return(currentValue || 0)+1;
+    });
   }
 
   render(){
@@ -52,8 +68,8 @@ export default class ProposalView extends React.Component{
       <div style={style}>
         <ProposalOverview style={upper} proposal={this.props.proposal}/>
         <div style={lower}>
-          <VoteArea style={pro} Side='Pro' Votes={this.props.proposal.val().VotesPro}/>
-          <VoteArea style={con} Side='Con' Votes={this.props.proposal.val().VotesCon}/>
+          <VoteArea newVote={this.upVote} style={pro} Side='Pro' Votes={this.props.proposal.val().VotesPro}/>
+          <VoteArea newVote={this.downVote} style={con} Side='Con' Votes={this.props.proposal.val().VotesCon}/>
         </div>
       </div>
     );

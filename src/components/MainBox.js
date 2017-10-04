@@ -65,7 +65,7 @@ export default class MainBox extends React.Component {
     }else if(this.props.selectedProposal.key){
      return(
        <div style={style}>
-         <ProposalView proposal={this.props.selectedProposal}/>
+         <ProposalView database={this.props.firebase.database()} proposal={this.props.selectedProposal}/>
        </div>
      ); 
     }else if(this.state.proposals.length > 0){
